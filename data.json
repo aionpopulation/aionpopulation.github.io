@@ -1,0 +1,71 @@
+{
+  "updated": "2026-08-24T10:28:56.295885+00:00",
+  "servers": [
+    {
+      "name": "EuroAion",
+      "url": "https://euroaion.com/en-US",
+      "version": "4.6",
+      "online": true,
+      "players": 279,
+      "metric": "in-game",
+      "note": null,
+      "unavailable": false,
+      "error": null
+    },
+    {
+      "name": "AionEmpire",
+      "url": "https://aionempire.com",
+      "version": "2.0",
+      "online": true,
+      "players": 1429,
+      "metric": "in-game",
+      "note": null,
+      "unavailable": false,
+      "error": null
+    },
+    {
+      "name": "GamezAion",
+      "url": "https://gamezaion.com",
+      "version": "4.8",
+      "online": false,
+      "players": null,
+      "metric": "in-game",
+      "note": "Population unavailable — bot protection prevents scraping",
+      "unavailable": true,
+      "error": null
+    },
+    {
+      "name": "OriginAion",
+      "url": "https://originaion.com",
+      "version": "4.6",
+      "online": true,
+      "players": 1423,
+      "metric": "in-game",
+      "note": null,
+      "unavailable": false,
+      "error": null
+    },
+    {
+      "name": "AionRiftShade",
+      "url": "https://aionriftshade.com",
+      "version": "4.8",
+      "online": false,
+      "players": null,
+      "metric": "in-game",
+      "note": "No public player count available",
+      "unavailable": true,
+      "error": null
+    },
+    {
+      "name": "AionDestiny",
+      "url": "https://aiondestiny.net",
+      "version": "4.6",
+      "online": true,
+      "players": 1126,
+      "metric": "in-game",
+      "note": null,
+      "unavailable": false,
+      "error": null
+    }
+  ]
+}
