@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <title>Aion Private Servers — Population</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Tokens ─────────────────────────────────────────── */
+    :root {
+      --bg:       #080a0f;
+      --surface:  #0f1219;
+      --border:   #1e2535;
+      --gold:     #c9a040;
+      --gold-dim: #7a611f;
+      --text:     #d8dde8;
+      --muted:    #5a6478;
+      --online:   #3cb97a;
+      --offline:  #8a3030;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+    /* ── Header ──────────────────────────────────────────── */
+    header { padding: 52px 0 36px; border-bottom: 1px solid var(--border); }
+    .eyebrow {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(26px, 5vw, 38px);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.01em;
+    }
+    .meta { margin-top: 12px; font-size: 13px; color: var(--muted); }
+    .meta span { color: var(--text); }
+
+    /* ── List ────────────────────────────────────────────── */
+    .server-list { padding: 20px 0 60px; display: flex; flex-direction: column; gap: 10px; }
+
+    /* ── Card ────────────────────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px 24px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0 24px;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s;
+    }
+    .card:hover { border-color: var(--gold-dim); }
+    .card.offline { opacity: 0.5; }
+
+    .server-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.02em;
+    }
+    .tags { margin-top: 5px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+    .tag {
+      font-size: 11px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 3px;
+      background: var(--border);
+      color: var(--muted);
+    }
+    .tag.version { color: var(--gold-dim); border: 1px solid var(--gold-dim); background: transparent; }
+
+    .status-dot {
+      display: inline-block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      margin-right: 5px;
+      background: var(--online);
+    }
+    .status-dot.off { background: var(--offline); }
+
+
+    .card-note { margin-top: 6px; font-size: 12px; color: var(--muted); }
+    .err-note  { margin-top: 6px; font-size: 12px; color: var(--offline); }
+
+    /* ── Player count ────────────────────────────────────── */
+    .pop-col { text-align: right; }
+    .pop-number {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1;
+      color: #fff;
+    }
+    .pop-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .na { font-size: 28px; color: var(--muted); }
+
+    /* ── Footer ──────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+    footer a { color: var(--muted); text-decoration: underline; }
+
+    @media (max-width: 500px) {
+      .card { grid-template-columns: 1fr; }
+      .pop-col { text-align: left; margin-top: 12px; }
+      .pop-number { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <p class="eyebrow">Population Tracker</p>
+      <h1>Aion Private Servers</h1>
+      <p class="meta">
+        Alphabetical order &nbsp;·&nbsp;
+        Updated every 30 min &nbsp;·&nbsp;
+        Last scraped: <span id="updated">—</span>
+      </p>
+    </header>
+
+    <div class="server-list" id="list"></div>
+
+    <footer>
+      <p>
+        Data scraped directly from each server's website. Not affiliated with any server.
+        &nbsp;·&nbsp;
+        <a href="https://github.com" id="gh-link">View on GitHub</a>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    async function load() {
+      let data;
+      try {
+        const res = await fetch('data.json?t=' + Date.now());
+        data = await res.json();
+      } catch (e) {
+        document.getElementById('list').innerHTML =
+          '<p style="color:var(--muted);padding:40px 0">Could not load data.json.</p>';
+        return;
+      }
+
+      if (data.updated && data.updated !== '1970-01-01T00:00:00+00:00') {
+        document.getElementById('updated').textContent = new Date(data.updated).toUTCString();
+      } else {
+        document.getElementById('updated').textContent = 'never (run the scraper first)';
+      }
+
+      const servers = [...(data.servers || [])].sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+
+      const list = document.getElementById('list');
+      list.innerHTML = '';
+
+      servers.forEach(s => {
+        const card = document.createElement('a');
+        card.href = s.url;
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer';
+        card.className = 'card' + (s.online ? '' : ' offline');
+
+        const dotClass = s.online ? 'status-dot' : 'status-dot off';
+        const note = s.note || (s.error && !s.online ? s.error : null);
+
+        card.innerHTML = s.unavailable ? `
+          <div class="info">
+            <div class="server-name">${s.name}</div>
+            <div class="tags">
+              <span class="tag version">v${s.version}</span>
+            </div>
+            ${note ? `<div class="card-note">${note}</div>` : ''}
+          </div>
+        ` : `
+          <div class="info">
+            <div class="server-name">${s.name}</div>
+            <div class="tags">
+              <span class="tag version">v${s.version}</span>
+              <span class="tag"><span class="${dotClass}"></span>${s.online ? 'Online' : 'Offline'}</span>
+            </div>
+            ${note ? `<div class="card-note">${note}</div>` : ''}
+          </div>
+
+          <div class="pop-col">
+            <div class="pop-number">
+              ${s.players !== null ? s.players.toLocaleString() : '<span class="na">—</span>'}
+            </div>
+            <div class="pop-label">players online</div>
+          </div>
+        `;
+
+        list.appendChild(card);
+      });
+    }
+
+    load();
+  </script>
+</body>
+</html>
