@@ -1,12 +1,12 @@
 {
-  "updated": "2026-09-01T18:12:19.194266+00:00",
+  "updated": "2026-09-01T18:41:07.847978+00:00",
   "servers": [
     {
       "name": "EuroAion",
       "url": "https://euroaion.com/en-US",
       "version": "4.6",
       "online": true,
-      "players": 746,
+      "players": 734,
       "metric": "in-game",
       "note": null,
       "unavailable": false,
@@ -17,7 +17,7 @@
       "url": "https://aionempire.com",
       "version": "2.0",
       "online": true,
-      "players": 2463,
+      "players": 2446,
       "metric": "in-game",
       "note": null,
       "unavailable": false,
@@ -42,7 +42,7 @@
       "players": null,
       "metric": "in-game",
       "note": null,
-      "error": "HTTPSConnectionPool(host='originaion.com', port=443): Read timed out. (read timeout=15)"
+      "error": "403 Client Error: Forbidden for url: https://originaion.com/api/server-status"
     },
     {
       "name": "AionRiftShade",
@@ -60,7 +60,7 @@
       "url": "https://aiondestiny.net",
       "version": "4.6",
       "online": true,
-      "players": 2378,
+      "players": 1950,
       "metric": "in-game",
       "note": null,
       "unavailable": false,
