@@ -1,12 +1,12 @@
 {
-  "updated": "2026-09-02T03:39:15.376480+00:00",
+  "updated": "2026-09-02T04:11:28.118427+00:00",
   "servers": [
     {
       "name": "EuroAion",
       "url": "https://euroaion.com/en-US",
       "version": "4.6",
       "online": true,
-      "players": 137,
+      "players": 155,
       "metric": "in-game",
       "note": null,
       "unavailable": false,
@@ -39,7 +39,7 @@
       "url": "https://originaion.com",
       "version": "4.6",
       "online": true,
-      "players": 563,
+      "players": 537,
       "metric": "in-game",
       "note": null,
       "unavailable": false,
@@ -61,7 +61,7 @@
       "url": "https://aiondestiny.net",
       "version": "4.6",
       "online": true,
-      "players": 262,
+      "players": 0,
       "metric": "in-game",
       "note": null,
       "unavailable": false,
