@@ -1,12 +1,12 @@
 {
-  "updated": "2026-09-04T16:10:51.104467+00:00",
+  "updated": "2026-09-04T16:38:37.107847+00:00",
   "servers": [
     {
       "name": "EuroAion",
       "url": "https://euroaion.com/en-US",
       "version": "4.6",
       "online": true,
-      "players": 594,
+      "players": 671,
       "metric": "in-game",
       "note": null,
       "unavailable": false,
@@ -16,12 +16,11 @@
       "name": "AionEmpire",
       "url": "https://aionempire.com",
       "version": "2.0",
-      "online": true,
-      "players": 2368,
+      "online": false,
+      "players": null,
       "metric": "in-game",
       "note": null,
-      "unavailable": false,
-      "error": null
+      "error": "HTTPSConnectionPool(host='aionempire.com', port=443): Read timed out. (read timeout=15)"
     },
     {
       "name": "GamezAion",
@@ -39,7 +38,7 @@
       "url": "https://originaion.com",
       "version": "4.6",
       "online": true,
-      "players": 2091,
+      "players": 2157,
       "metric": "in-game",
       "note": null,
       "unavailable": false,
@@ -61,7 +60,7 @@
       "url": "https://aiondestiny.net",
       "version": "4.6",
       "online": true,
-      "players": 1868,
+      "players": 1886,
       "metric": "in-game",
       "note": null,
       "unavailable": false,
