@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-17T13:12:03.908374+00:00",
+  "updated": "2026-09-17T13:40:16.091185+00:00",
   "servers": [
     {
       "name": "EuroAion",
@@ -17,7 +17,7 @@
       "url": "https://aionempire.com",
       "version": "2.0",
       "online": true,
-      "players": 1855,
+      "players": 1928,
       "metric": "in-game",
       "note": null,
       "unavailable": false,
@@ -61,7 +61,7 @@
       "url": "https://aiondestiny.net",
       "version": "4.6",
       "online": true,
-      "players": 1041,
+      "players": 1001,
       "metric": "in-game",
       "note": null,
       "unavailable": false,
