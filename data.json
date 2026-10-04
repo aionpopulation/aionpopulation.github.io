@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-04T17:17:57.177130+00:00",
+  "updated": "2026-10-04T20:20:15.201595+00:00",
   "servers": [
     {
       "name": "EuroAion",
@@ -16,11 +16,12 @@
       "name": "AionEmpire",
       "url": "https://aionempire.com",
       "version": "2.0",
-      "online": false,
-      "players": null,
+      "online": true,
+      "players": 1738,
       "metric": "in-game",
       "note": null,
-      "error": "HTTPSConnectionPool(host='aionempire.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))"
+      "unavailable": false,
+      "error": null
     },
     {
       "name": "GamezAion",
@@ -38,7 +39,7 @@
       "url": "https://originaion.com",
       "version": "4.6",
       "online": true,
-      "players": 1680,
+      "players": 1499,
       "metric": "in-game",
       "note": null,
       "unavailable": false,
@@ -60,7 +61,7 @@
       "url": "https://aiondestiny.net",
       "version": "4.6",
       "online": true,
-      "players": 2088,
+      "players": 1360,
       "metric": "in-game",
       "note": null,
       "unavailable": false,
